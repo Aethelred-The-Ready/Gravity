@@ -2,14 +2,14 @@ import java.awt.Color;
 
 public class OrbitalBody {
 
-	private double mass;//Mass in kilograms
+	private double GM;//Mass in kilograms * Gravitational constant
 	private double radius;//radius of body in meters
 	private double[] pos = new double[2];//position, in meters, x,y
 	private double[] vel = new double[2];//velocity in m/s
 	private Color col;
 	
 	public OrbitalBody(double m, double r, double x, double y, double vx, double vy, Color c) {
-		mass = m;
+		GM = m;
 		radius = r;
 		pos[0] = x;
 		pos[1] = y;
@@ -18,8 +18,8 @@ public class OrbitalBody {
 		col = c;
 	}
 	
-	public double getMass() {
-		return mass;
+	public double getGMass() {
+		return GM;
 	}
 	
 	public double[] getPos() {
