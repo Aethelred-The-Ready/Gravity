@@ -7,8 +7,9 @@ public class OrbitalBody {
 	private double[] pos = new double[2];//position, in meters, x,y
 	private double[] vel = new double[2];//velocity in m/s
 	private Color col;
+	private String name;
 	
-	public OrbitalBody(double m, double r, double x, double y, double vx, double vy, Color c) {
+	public OrbitalBody(String n, double m, double r, double x, double y, double vx, double vy, Color c) {
 		GM = m;
 		radius = r;
 		pos[0] = x;
@@ -16,6 +17,7 @@ public class OrbitalBody {
 		vel[0] = vx;
 		vel[1] = vy;
 		col = c;
+		name = n;
 	}
 	
 	public double getGMass() {
@@ -48,5 +50,9 @@ public class OrbitalBody {
 	
 	public Color getCol() {
 		return col;
+	}
+
+	public String getName() {
+		return name;
 	}
 }

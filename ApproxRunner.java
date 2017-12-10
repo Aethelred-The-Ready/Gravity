@@ -14,9 +14,9 @@ public class ApproxRunner {
 	//static OrbitalBody Earth = new OrbitalBody(3.986004418E14, 6371000, 0, 0, 0, -1.33091E1, Color.GREEN);
 	//static OrbitalBody Luna = new OrbitalBody(4.9048695E12, 1737100, 362600000, 0, 0, 1082, new Color(127,127,127));
 	//Sun Earth Mars
-	static OrbitalBody Sol = new OrbitalBody(1.32712440018E20, 695700000, 0, 0, 0, 0, Color.YELLOW);
-	static OrbitalBody Earth = new OrbitalBody(3.986004418E14, 6371000, 147.09E9, 0, 0, 30290, Color.GREEN);
-	static OrbitalBody Mars = new OrbitalBody(4.282837E13, 3389500, 206.62E9, 0, 0, 26500, Color.RED);
+	static OrbitalBody Sol = new OrbitalBody("Sol", 1.32712440018E20, 695700000, 0, 0, 0, 0, Color.YELLOW);
+	static OrbitalBody Earth = new OrbitalBody("Earth", 3.986004418E14, 6371000, 147.09E9, 0, 0, 30290, Color.GREEN);
+	static OrbitalBody Mars = new OrbitalBody("Mars", 4.282837E13, 3389500, 206.62E9, 0, 0, 26500, Color.RED);
 	final static double timeCon = 1;
 	final static double posScale = 0.000000001d;
 	//for non-log EM use 0.000001d
@@ -46,13 +46,13 @@ public class ApproxRunner {
 			//	Min = dist(Earth, Luna);
 			//}
 			count++;
-			if(inBound(getAng(Sol, Earth), 0, 0.000001)) {
-				System.out.println("Time: " + (count*timeCon));
+			if(inBound(getAng(Sol, Mars), 0, 0.000001)) {
+				//System.out.println("Time: " + (count*timeCon));
 				//System.out.println("Ap: " + Max + "\n" + "Pe: " + Min);
 				//System.out.println("Earthvel: " + Earth.getVel()[0] + ", " + Earth.getVel()[0]);
 			}
-			if(count%1000 == 0)
-				System.out.println(Earth.getPos()[1]);
+			//if(count%1000 == 0)
+			//	System.out.println(Earth.getPos()[1]);
 			j.repaint();
 			//try {
 			//	Thread.sleep(10);
@@ -74,6 +74,7 @@ public class ApproxRunner {
 					accg = grav(oBs.get(i), oBs.get(k));
 					acc[0] += accg[0];
 					acc[1] += accg[1];
+					System.out.println(oBs.get(k).getName() + " -> " + oBs.get(i).getName() + " " + accg[0] + " " + accg[1]);
 				}
 			}
 			oBs.get(i).applyAcc(acc, timeCon);
